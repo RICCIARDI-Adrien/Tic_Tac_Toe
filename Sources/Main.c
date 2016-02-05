@@ -7,16 +7,14 @@
 #include <Interface.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-// TEST
-#include <Stack.h>
+#include <time.h>
 
 //-------------------------------------------------------------------------------------------------
 // Entry point
 //-------------------------------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
-	unsigned int Cursor_Row = 0, Cursor_Column = 0;
+	unsigned int Cursor_Row, Cursor_Column;
 	
 	// Check parameters
 	if (argc != 2) // TODO set to 3 to take Difficulty into account
@@ -45,23 +43,8 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	
-	// TEST
-	{
-		TStack s;
-		
-		StackInitialize(&s);
-		
-		StackPush(&s, 3);
-		StackPush(&s, 4);
-		StackPush(&s, 5);
-		StackPush(&s, 58);
-		
-		while (!StackIsEmpty(&s)) printf("%d\n", StackPop(&s));
-
-		// Trigger the assert
-		StackPop(&s);
-		return 15;
-	}
+	// Initialize the random numbers generator once and for all
+	srand(time(NULL));
 	
 	// Display the empty grid
 	InterfaceInitialize();
@@ -71,17 +54,16 @@ int main(int argc, char *argv[])
 		"Space : insert a circle\r\n"
 		"X : exit program");
 	
-	// TEST
-	InterfaceDisplayCell(0, 0, 1);
-	InterfaceDisplayCell(3, 3, 2);
-	InterfaceDisplayCell(6, 2, 1);
-	InterfaceDisplayCell(9, 9, 2);
-	GridSetCellContent(0, 0, 1);
-	GridSetCellContent(3, 3, 2);
-	GridSetCellContent(6, 2, 1);
-	GridSetCellContent(9, 9, 2);
+	// Let the program make the first move
+	// TODO do this a bit smarter ?
+	Cursor_Row = rand() % Grid_Size; // Recycle the Cursor_xxx variables
+	Cursor_Column = rand() % Grid_Size;
+	GridSetCellContent(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CROSS);
+	InterfaceDisplayCell(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CROSS);
 	
 	// Display the cursor on the upper left cell
+	Cursor_Row = 0;
+	Cursor_Column = 0;
 	InterfaceDisplayCursor(0, 0, 1);
 	
 	while (1)
@@ -129,8 +111,13 @@ int main(int argc, char *argv[])
 				break;
 				
 			case ' ':
-				// TODO check for empty grid cell
-				// TODO check for allowed move
+				// Is the cell empty ?
+				if (GridGetCellContent(Cursor_Row, Cursor_Column) != GRID_CELL_CONTENT_EMPTY) break;
+				// Is the move allowed ?
+				if (!GridIsMoveAllowed(Cursor_Row, Cursor_Column)) break;
+				// The move is allowed, so fill the grid
+				GridSetCellContent(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CIRCLE);
+				// TODO did the player won ?
 				break;
 				
 			case 'X':

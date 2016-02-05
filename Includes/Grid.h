@@ -39,4 +39,12 @@ TGridCellContent GridGetCellContent(unsigned int Row, unsigned int Column);
  */
 void GridSetCellContent(unsigned int Row, unsigned int Column, TGridCellContent Cell_Content);
 
+/** Tell whether it is possible or not to fill the specified cell.
+ * @param Row The cell to fill row.
+ * @param Column The cell to fill column.
+ * @return 1 if it is possible to fill the cell,
+ * @return 0 if the cell can't be filled without breaking game rules.
+ */
+int GridIsMoveAllowed(unsigned int Row, unsigned int Column);
+
 #endif

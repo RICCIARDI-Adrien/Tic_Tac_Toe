@@ -134,11 +134,6 @@ void InterfaceDisplayCursor(unsigned int Row, unsigned int Column, int Is_Cursor
 	// Retrieve the cell character
 	switch (GridGetCellContent(Row, Column))
 	{
-		case GRID_CELL_CONTENT_EMPTY:
-			Character = ' ';
-			Character_Color = 30 + CONFIGURATION_CURSOR_DISPLAYING_COLOR;
-			break;
-			
 		case GRID_CELL_CONTENT_CROSS:
 			Character = 'X';
 			Character_Color = CONFIGURATION_CROSS_DISPLAYING_COLOR;
@@ -149,10 +144,10 @@ void InterfaceDisplayCursor(unsigned int Row, unsigned int Column, int Is_Cursor
 			Character_Color = CONFIGURATION_CIRCLE_DISPLAYING_COLOR;
 			break;
 		
-		// Indicate there is something wrong in the grid
+		// Empty cell
 		default:
-			Character = '?';
-			Character_Color = 31;
+			Character = ' ';
+			Character_Color = 30 + CONFIGURATION_CURSOR_DISPLAYING_COLOR;
 			break;
 	}
 	
