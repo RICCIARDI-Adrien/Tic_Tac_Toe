@@ -148,9 +148,11 @@ void InterfaceDisplayCursor(unsigned int Row, unsigned int Column, int Is_Cursor
 			Character = 'O';
 			Character_Color = CONFIGURATION_CIRCLE_DISPLAYING_COLOR;
 			break;
-			
+		
+		// Indicate there is something wrong in the grid
 		default:
-			assert(0);
+			Character = '?';
+			Character_Color = 31;
 			break;
 	}
 	

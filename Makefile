@@ -7,10 +7,10 @@ SOURCES_PATH = Sources
 BINARY = Tic_Tac_Toe
 SOURCES = $(SOURCES_PATH)/Grid.c $(SOURCES_PATH)/Interface.c $(SOURCES_PATH)/Main.c
 
-release: CCFLAGS += -O3
+release: CCFLAGS += -O3 -DNDEBUG
 release: all
 
-debug: CCFLAGS += -DDEBUG -g
+debug: CCFLAGS += -g
 debug: all
 
 all:

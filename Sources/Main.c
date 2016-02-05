@@ -8,6 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// TEST
+#include <Stack.h>
+
 //-------------------------------------------------------------------------------------------------
 // Entry point
 //-------------------------------------------------------------------------------------------------
@@ -40,6 +43,24 @@ int main(int argc, char *argv[])
 	{
 		printf("Error : the minimum allowed grid size is 5 and the maximum allowed grid size is %d.\n", CONFIGURATION_MAXIMUM_GRID_SIZE);
 		return EXIT_FAILURE;
+	}
+	
+	// TEST
+	{
+		TStack s;
+		
+		StackInitialize(&s);
+		
+		StackPush(&s, 3);
+		StackPush(&s, 4);
+		StackPush(&s, 5);
+		StackPush(&s, 58);
+		
+		while (!StackIsEmpty(&s)) printf("%d\n", StackPop(&s));
+
+		// Trigger the assert
+		StackPop(&s);
+		return 15;
 	}
 	
 	// Display the empty grid

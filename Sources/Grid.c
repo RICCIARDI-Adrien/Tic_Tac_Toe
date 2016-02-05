@@ -5,6 +5,7 @@
 #include <assert.h>
 #include <Configuration.h>
 #include <Grid.h>
+#include <Stack.h>
 
 //-------------------------------------------------------------------------------------------------
 // Private constants and macros
@@ -32,20 +33,16 @@ unsigned int Grid_Size;
 //-------------------------------------------------------------------------------------------------
 TGridCellContent GridGetCellContent(unsigned int Row, unsigned int Column)
 {
-	#ifdef DEBUG
-		assert(Row < Grid_Size);
-		assert(Column < Grid_Size);
-	#endif
+	assert(Row < Grid_Size);
+	assert(Column < Grid_Size);
 	
 	return Grid[GRID_COMPUTE_CELL_INDEX(Row, Column)];
 }
 
 void GridSetCellContent(unsigned int Row, unsigned int Column, TGridCellContent Cell_Content)
 {
-	#ifdef DEBUG
-		assert(Row < Grid_Size);
-		assert(Column < Grid_Size);
-	#endif
+	assert(Row < Grid_Size);
+	assert(Column < Grid_Size);
 	
 	Grid[GRID_COMPUTE_CELL_INDEX(Row, Column)] = Cell_Content;
 }
