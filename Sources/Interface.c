@@ -50,28 +50,11 @@ static inline void InterfaceDisplayEmptyGrid(void)
 	printf("+\r\n"); // Add the last '+'
 }
 
-/** Put the terminal cursor to the position corresponding to the provided grid coordinates.
- * @param Grid_Row The row in the grid.
- * @param Grid_Column The column in the grid.
- */
-static inline void InterfaceSetCursorPosition(unsigned int Grid_Row, unsigned int Grid_Column)
-{
-	// Convert the coordinates to something displayable on the terminal
-	Grid_Row = (Grid_Row + 1) * 2; // +1 because VT100 coordinates start from 1
-	Grid_Column = ((Grid_Column + 1) * 4) - 1; // +1 because VT100 coordinates start from 1
-	
-	// Set the cursor to the desired location
-	printf("\033[%d;%dH", Grid_Row, Grid_Column);
-}
-
 //-------------------------------------------------------------------------------------------------
 // Public functions
 //-------------------------------------------------------------------------------------------------
 void InterfaceInitialize(void)
 {
-	// Hide the cursor
-	printf("\033[?25l");
-	
 	// Clear the terminal and put the cursor to the upper left position
 	printf("\033[2J\n\033[H");
 	
@@ -90,11 +73,21 @@ void InterfaceQuit(void)
 	// Clear the terminal and put the cursor to the upper left position
 	printf("\033[2J\n\033[H");
 	
-	// Display the cursor
-	printf("\033[?25h");
-	
 	// Re-enable the terminal "text" mode support
 	system("stty cooked echo");
+}
+
+void InterfaceSetCursorPosition(unsigned int Row, unsigned int Column)
+{
+	assert(Row < Grid_Size);
+	assert(Column < Grid_Size);
+	
+	// Convert the coordinates to something displayable on the terminal
+	Row = (Row + 1) * 2; // +1 because VT100 coordinates start from 1
+	Column = ((Column + 1) * 4) - 1; // +1 because VT100 coordinates start from 1
+	
+	// Set the cursor to the desired location
+	printf("\033[%d;%dH", Row, Column);
 }
 
 void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellContent Cell_Content)
@@ -119,40 +112,10 @@ void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellConten
 	}
 	
 	// Display the character
+	printf("\0337"); // Save the current cursor position and attributes
+	printf("\033[?25l"); // Hide the cursor to avoid the player seeing strange movements
 	InterfaceSetCursorPosition(Row, Column);
-	printf("\033[%dm%c", Character_Color, Character);
-}
-
-void InterfaceDisplayCursor(unsigned int Row, unsigned int Column, int Is_Cursor_Visible)
-{
-	char Character;
-	int Character_Color;
-	
-	assert(Row < Grid_Size);
-	assert(Column < Grid_Size);
-	
-	// Retrieve the cell character
-	switch (GridGetCellContent(Row, Column))
-	{
-		case GRID_CELL_CONTENT_CROSS:
-			Character = 'X';
-			Character_Color = CONFIGURATION_CROSS_DISPLAYING_COLOR;
-			break;
-			
-		case GRID_CELL_CONTENT_CIRCLE:
-			Character = 'O';
-			Character_Color = CONFIGURATION_CIRCLE_DISPLAYING_COLOR;
-			break;
-		
-		// Empty cell
-		default:
-			Character = ' ';
-			Character_Color = 30 + CONFIGURATION_CURSOR_DISPLAYING_COLOR;
-			break;
-	}
-	
-	// Display the character
-	InterfaceSetCursorPosition(Row, Column);
-	if (Is_Cursor_Visible) printf("\033[4%dm\033[%dm%c", CONFIGURATION_CURSOR_DISPLAYING_COLOR, Character_Color, Character);
-	else printf("\033[49m\033[%dm%c", Character_Color, Character); // Reset the background color
+	printf("\033[%dm%c", Character_Color, Character); // Display the cell character
+	printf("\0338"); // Restore the previously saved cursor position and attributes
+	printf("\033[?25h"); // Show the cursor
 }

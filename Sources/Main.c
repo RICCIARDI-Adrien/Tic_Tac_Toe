@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 	// Display the cursor on the upper left cell
 	Cursor_Row = 0;
 	Cursor_Column = 0;
-	InterfaceDisplayCursor(0, 0, 1);
+	InterfaceSetCursorPosition(0, 0);
 
 	while (1)
 	{
@@ -75,9 +75,8 @@ int main(int argc, char *argv[])
 			case 'z':
 				if (Cursor_Row > 0)
 				{
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 0);
 					Cursor_Row--;
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 1);
+					InterfaceSetCursorPosition(Cursor_Row, Cursor_Column);
 				}
 				break;
 				
@@ -85,9 +84,8 @@ int main(int argc, char *argv[])
 			case 's':
 				if (Cursor_Row < Grid_Size - 1)
 				{
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 0);
 					Cursor_Row++;
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 1);
+					InterfaceSetCursorPosition(Cursor_Row, Cursor_Column);
 				}
 				break;
 				
@@ -95,9 +93,8 @@ int main(int argc, char *argv[])
 			case 'q':
 				if (Cursor_Column > 0)
 				{
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 0);
 					Cursor_Column--;
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 1);
+					InterfaceSetCursorPosition(Cursor_Row, Cursor_Column);
 				}
 				break;
 				
@@ -105,9 +102,8 @@ int main(int argc, char *argv[])
 			case 'd':
 				if (Cursor_Column < Grid_Size - 1)
 				{
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 0);
 					Cursor_Column++;
-					InterfaceDisplayCursor(Cursor_Row, Cursor_Column, 1);
+					InterfaceSetCursorPosition(Cursor_Row, Cursor_Column);
 				}
 				break;
 				

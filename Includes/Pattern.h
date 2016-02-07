@@ -15,7 +15,7 @@ typedef struct
 {
 	unsigned int Rows_Count; //! The pattern vertical size.
 	unsigned int Columns_Count; //! The pattern horizontal size.
-	int Value; //! How the pattern valuated if found.
+	int Value; //! How is the pattern valuated if found.
 	unsigned int Cells[]; //! The pattern representation. 1 represents the requested cell type, 0 represents any cell.
 } TPattern;
 

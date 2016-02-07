@@ -1,5 +1,6 @@
 # Tic Tac Toe
-A terminal tic-tac-toe game featuring an advanced artificial intelligence and a configurable grid up to 20x20 cells.
+A tic-tac-toe game featuring an advanced artificial intelligence and a configurable grid up to 20x20 cells.  
+This game is designed to be played in a VT100 terminal.
 
 ## Rules
 The player or the computer must align 5 consecutive cells to win.  

@@ -11,9 +11,14 @@
 /** Initialize the terminal in raw mode and clear it. */
 void InterfaceInitialize(void);
 
+/** Restore the default terminal attributes. */
 void InterfaceQuit(void);
 
-//void InterfaceDisplayEmptyGrid(void);
+/** Put the terminal cursor to the requested position.
+ * @param Row The row in the grid.
+ * @param Column The column in the grid.
+ */
+void InterfaceSetCursorPosition(unsigned int Row, unsigned int Column);
 
 /** Display a cell content.
  * @param Row The cell row (Y axis).
@@ -21,17 +26,5 @@ void InterfaceQuit(void);
  * @param Cell_Content The cell content to display.
  */
 void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellContent Cell_Content);
-
-/** Wait for a user key.
- * @return The last pressed key.
- */
-//char InterfaceWaitForUser(void);
-
-/** Display or hide the cursor.
- * @param Row The cursor row.
- * @param Column The cursor column.
- * @param Is_Cursor_Visible Whether to display the cursor (set to 1) or to remove the cursor trace (set to 0).
- */
-void InterfaceDisplayCursor(unsigned int Row, unsigned int Column, int Is_Cursor_Visible);
 
 #endif
