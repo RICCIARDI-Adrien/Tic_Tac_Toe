@@ -21,7 +21,7 @@
 typedef struct __attribute__((packed))
 {
 	signed int Stack_Pointer; //! The current stack element index in the array. -1 indicates that the stack is empty.
-	unsigned char Elements[STACK_MAXIMUM_ELEMENTS_COUNT]; //! All stack elements. Use 1-byte variables to save memory space.
+	unsigned short Elements[STACK_MAXIMUM_ELEMENTS_COUNT]; //! All stack elements. Use 2-byte variables to save memory space.
 } TStack;
 
 //-------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ static inline __attribute__((always_inline)) void StackInitialize(TStack *Pointe
  * @param Pointer_Stack The stack to add the element to.
  * @param Element The element to add.
  */
-static inline __attribute__((always_inline)) void StackPush(TStack *Pointer_Stack, unsigned char Element)
+static inline __attribute__((always_inline)) void StackPush(TStack *Pointer_Stack, unsigned short Element)
 {
 	assert(Pointer_Stack->Stack_Pointer < STACK_MAXIMUM_ELEMENTS_COUNT);
 	
@@ -52,9 +52,9 @@ static inline __attribute__((always_inline)) void StackPush(TStack *Pointer_Stac
  * @param Pointer_Stack The stack to get the element from.
  * @return The element located on the stack top.
  */
-static inline __attribute__((always_inline)) unsigned char StackPop(TStack *Pointer_Stack)
+static inline __attribute__((always_inline)) unsigned short StackPop(TStack *Pointer_Stack)
 {
-	unsigned char Element;
+	unsigned short Element;
 	
 	assert(Pointer_Stack->Stack_Pointer >= 0);
 	

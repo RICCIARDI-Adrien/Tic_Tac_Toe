@@ -18,4 +18,7 @@
 /** The cursor terminal displaying color (only the color value, the background/foreground attribute will be automatically addded). */
 #define CONFIGURATION_CURSOR_DISPLAYING_COLOR 1
 
+/** How many cells of the same type must be aligned to win. */
+#define CONFIGURATION_ALIGNED_CELLS_FOR_VICTORY_COUNT 5
+
 #endif

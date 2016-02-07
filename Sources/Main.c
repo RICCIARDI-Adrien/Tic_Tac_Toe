@@ -2,6 +2,7 @@
  * Tic Tac Toe entry point and main loop.
  * @author Adrien RICCIARDI
  */
+#include <AI.h>
 #include <Configuration.h>
 #include <Grid.h>
 #include <Interface.h>
@@ -37,9 +38,9 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 	// ...and it must not exceed the maximum grid size
-	if ((Grid_Size < 5) || (Grid_Size > CONFIGURATION_MAXIMUM_GRID_SIZE))
+	if ((Grid_Size < 10) || (Grid_Size > CONFIGURATION_MAXIMUM_GRID_SIZE))
 	{
-		printf("Error : the minimum allowed grid size is 5 and the maximum allowed grid size is %d.\n", CONFIGURATION_MAXIMUM_GRID_SIZE);
+		printf("Error : the minimum allowed grid size is 10 and the maximum allowed grid size is %d.\n", CONFIGURATION_MAXIMUM_GRID_SIZE);
 		return EXIT_FAILURE;
 	}
 	
@@ -65,7 +66,7 @@ int main(int argc, char *argv[])
 	Cursor_Row = 0;
 	Cursor_Column = 0;
 	InterfaceDisplayCursor(0, 0, 1);
-	
+
 	while (1)
 	{
 		switch (getchar())
@@ -111,13 +112,16 @@ int main(int argc, char *argv[])
 				break;
 				
 			case ' ':
-				// Is the cell empty ?
-				if (GridGetCellContent(Cursor_Row, Cursor_Column) != GRID_CELL_CONTENT_EMPTY) break;
 				// Is the move allowed ?
 				if (!GridIsMoveAllowed(Cursor_Row, Cursor_Column)) break;
 				// The move is allowed, so fill the grid
 				GridSetCellContent(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CIRCLE);
+				InterfaceDisplayCell(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CIRCLE);
 				// TODO did the player won ?
+				// TODO make the computer play
+				AIMakeMove();
+				// TODO did the computer won ?
+				// TODO match nul ?
 				break;
 				
 			case 'X':

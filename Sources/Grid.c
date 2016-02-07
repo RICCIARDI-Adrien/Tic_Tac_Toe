@@ -54,6 +54,9 @@ int GridIsMoveAllowed(unsigned int Row, unsigned int Column)
 	assert(Row < Grid_Size);
 	assert(Column < Grid_Size);
 	
+	// Can't play on a yet filled cell
+	if (GridGetCellContent(Row, Column) != GRID_CELL_CONTENT_EMPTY) return 0;
+	
 	// Check for a filled cell on north-west
 	if ((Row > 0) && (Column > 0) && (GridGetCellContent(Row - 1, Column - 1) != GRID_CELL_CONTENT_EMPTY)) return 1;
 	// Check for a filled cell on north
