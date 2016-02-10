@@ -16,18 +16,25 @@ typedef struct
 	unsigned int Rows_Count; //! The pattern vertical size.
 	unsigned int Columns_Count; //! The pattern horizontal size.
 	int Value; //! How is the pattern valuated if found.
-	unsigned int Cells[]; //! The pattern representation. 1 represents the requested cell type, 0 represents any cell.
+	char Cells[]; //! The pattern representation. 'o' represents the other cell type (cross or circle), ' ' represents an empty cell, 'r' represents the requested cell type (cross or circle), 'a' represents any cell.
 } TPattern;
 
 //-------------------------------------------------------------------------------------------------
 // Functions
 //-------------------------------------------------------------------------------------------------
-/** Try to match the corresponding pattern made with the provided cell type with the whole grid content.
+/** Try to match the corresponding pattern made with the provided cell type with the whole grid content. Stop whenever the first occurrence of the pattern is found.
  * @param Pointer_Pattern The pattern to match.
  * @param Cell_Type The cell the pattern must match.
  * @return 1 if the pattern matched,
  * @return 0 if the pattern did not match.
  */
-int PatternMatch(TPattern *Pointer_Pattern, TGridCellContent Cell_Type);
+int PatternMatchFirst(TPattern *Pointer_Pattern, TGridCellContent Cell_Type);
+
+/** Try to match the corresponding pattern made with the provided cell type with the whole grid content. Count all pattern occurrences.
+ * @param Pointer_Pattern The pattern to match.
+ * @param Cell_Type The cell the pattern must match.
+ * @return the matches amount.
+ */
+int PatternMatchAll(TPattern *Pointer_Pattern, TGridCellContent Cell_Type);
 
 #endif

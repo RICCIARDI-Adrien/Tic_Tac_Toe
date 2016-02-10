@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------------------------
 /** Compute a cell location in the grid.
  * @param Row The cell row.
- * @param Colum The cell column.
+ * @param Column The cell column.
  * @return The cell index in the grid array.
  */
 #define GRID_COMPUTE_CELL_INDEX(Row, Column) ((Row * Grid_Size) + Column)

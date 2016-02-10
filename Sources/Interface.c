@@ -97,7 +97,7 @@ void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellConten
 	
 	assert(Row < Grid_Size);
 	assert(Column < Grid_Size);
-	assert((Cell_Content == GRID_CELL_CONTENT_CROSS) || (Cell_Content == GRID_CELL_CONTENT_CIRCLE));
+	assert((Cell_Content == GRID_CELL_CONTENT_CROSS) || (Cell_Content == GRID_CELL_CONTENT_CIRCLE) || (Cell_Content == GRID_CELL_CONTENT_EMPTY));
 	
 	// Choose the right color and character according to the cell content
 	if (Cell_Content == GRID_CELL_CONTENT_CROSS)
@@ -105,10 +105,15 @@ void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellConten
 		Character = 'X';
 		Character_Color = CONFIGURATION_CROSS_DISPLAYING_COLOR;
 	}
-	else
+	else if (Cell_Content == GRID_CELL_CONTENT_CIRCLE)
 	{
 		Character = 'O';
 		Character_Color = CONFIGURATION_CIRCLE_DISPLAYING_COLOR;
+	}
+	else
+	{
+		Character = ' ';
+		Character_Color = 39; // Default color
 	}
 	
 	// Display the character
