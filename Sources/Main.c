@@ -20,9 +20,8 @@ int main(int argc, char *argv[])
 	// Check parameters
 	if (argc != 2) // TODO set to 3 to take Difficulty into account
 	{
-		printf("Usage : %s Grid_Size Difficulty\n"
-			"Grid_Size : 5, 10, 15 or 20 cells\n" // TODO better comment that can be independent from the configurable grid size
-			"Difficulty : easy, medium, hard\n", argv[0]);
+		printf("Usage : %s Grid_Size\n"
+			"Grid_Size : 5, 10, 15 or 20 cells\n", argv[0]); // TODO better comment that can be independent from the configurable grid size
 		return EXIT_FAILURE;
 	}
 	// Extract the grid size parameter

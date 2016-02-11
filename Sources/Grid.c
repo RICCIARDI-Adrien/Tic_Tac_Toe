@@ -5,7 +5,6 @@
 #include <assert.h>
 #include <Configuration.h>
 #include <Grid.h>
-#include <Stack.h>
 
 //-------------------------------------------------------------------------------------------------
 // Private constants and macros
