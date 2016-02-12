@@ -75,70 +75,70 @@ static TPattern AI_Pattern_Common_4_5 =
 static TPattern AI_Pattern_Common_4_6 =
 {
 	5,
-	5,
+	1,
 	100000,
 	{
-		' ', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a'
+		' ',
+		'r',
+		'r',
+		'r',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_4_7 =
 {
 	5,
-	5,
+	1,
 	100000,
 	{
-		'r', 'a', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a'
+		'r',
+		' ',
+		'r',
+		'r',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_4_8 =
 {
 	5,
-	5,
+	1,
 	100000,
 	{
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a'
+		'r',
+		'r',
+		' ',
+		'r',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_4_9 =
 {
 	5,
-	5,
+	1,
 	100000,
 	{
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a'
+		'r',
+		'r',
+		'r',
+		' ',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_4_10 =
 {
 	5,
-	5,
+	1,
 	100000,
 	{
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a', 'a'
+		'r',
+		'r',
+		'r',
+		'r',
+		' '
 	}
 };
 
@@ -325,52 +325,52 @@ static TPattern AI_Pattern_Common_3_4 =
 static TPattern AI_Pattern_Common_3_5 =
 {
 	4,
-	4,
+	1,
 	10000,
 	{
-		' ', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a'
+		' ',
+		'r',
+		'r',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_3_6 =
 {
 	4,
-	4,
+	1,
 	10000,
 	{
-		'r', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a'
+		'r',
+		' ',
+		'r',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_3_7 =
 {
 	4,
-	4,
+	1,
 	10000,
 	{
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a'
+		'r',
+		'r',
+		' ',
+		'r'
 	}
 };
 
 static TPattern AI_Pattern_Common_3_8 =
 {
 	4,
-	4,
+	1,
 	10000,
 	{
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a',
-		' ', 'a', 'a', 'a'
+		'r',
+		'r',
+		'r',
+		' '
 	}
 };
 
@@ -503,14 +503,14 @@ static TPattern AI_Pattern_Attack_5_1 =
 static TPattern AI_Pattern_Attack_5_2 =
 {
 	5,
-	5,
+	1,
 	1000000,
 	{
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a',
-		'r', 'a', 'a', 'a', 'a'
+		'r',
+		'r',
+		'r',
+		'r',
+		'r'
 	}
 };
 
