@@ -47,4 +47,11 @@ void GridSetCellContent(unsigned int Row, unsigned int Column, TGridCellContent 
  */
 int GridIsMoveAllowed(unsigned int Row, unsigned int Column);
 
+/** Tell if the game is won by these cells.
+ * @param Cell_Content The cell to check.
+ * @return 1 if the game is won,
+ * @return 0 if not.
+ */
+int GridIsGameWon(TGridCellContent Cell_Content);
+
 #endif

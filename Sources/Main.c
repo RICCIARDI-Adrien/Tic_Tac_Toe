@@ -109,20 +109,36 @@ int main(int argc, char *argv[])
 			case ' ':
 				// Is the move allowed ?
 				if (!GridIsMoveAllowed(Cursor_Row, Cursor_Column)) break;
+				
 				// The move is allowed, so fill the grid
 				GridSetCellContent(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CIRCLE);
 				InterfaceDisplayCell(Cursor_Row, Cursor_Column, GRID_CELL_CONTENT_CIRCLE);
-				// TODO did the player won ?
-				// TODO make the computer play
+				// Did the player won ?
+				if (GridIsGameWon(GRID_CELL_CONTENT_CIRCLE))
+				{
+					InterfaceDisplayVictoryMessage("\033[32mYou won !\033[0m");
+					goto Exit;
+				}
+				
+				// Make the computer play
 				AIMakeMove();
-				// TODO did the computer won ?
+				// Did the computer won ?
+				if (GridIsGameWon(GRID_CELL_CONTENT_CROSS))
+				{
+					InterfaceDisplayVictoryMessage("\033[31mComputer won...\033[0m");
+					goto Exit;
+				}
+				
 				// TODO match nul ?
 				break;
 				
 			case 'X':
 			case 'x':
-				InterfaceQuit();
-				return EXIT_SUCCESS;
+				goto Exit;
 		}
 	}
+	
+Exit:
+	InterfaceQuit();
+	return EXIT_SUCCESS;
 }

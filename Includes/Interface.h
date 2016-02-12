@@ -27,4 +27,9 @@ void InterfaceSetCursorPosition(unsigned int Row, unsigned int Column);
  */
 void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellContent Cell_Content);
 
+/** Display the victory message at the grid end and wait for the player to hit the 'x' key.
+ * @param String_Message The message to display.
+ */
+void InterfaceDisplayVictoryMessage(char *String_Message);
+
 #endif

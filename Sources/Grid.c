@@ -5,6 +5,8 @@
 #include <assert.h>
 #include <Configuration.h>
 #include <Grid.h>
+#include <Pattern.h>
+#include <stdio.h>
 
 //-------------------------------------------------------------------------------------------------
 // Private constants and macros
@@ -21,6 +23,72 @@
 //-------------------------------------------------------------------------------------------------
 /** The grid. */
 static TGridCellContent Grid[CONFIGURATION_MAXIMUM_GRID_SIZE * CONFIGURATION_MAXIMUM_GRID_SIZE];
+
+/** Horizontal winning pattern. */
+static TPattern Grid_Winning_Pattern_1 =
+{
+	1,
+	5,
+	1000,
+	{
+		'r', 'r', 'r', 'r', 'r'
+	}
+};
+
+/** Vertical winning pattern. */
+static TPattern Grid_Winning_Pattern_2 =
+{
+	5,
+	1,
+	1000,
+	{
+		'r',
+		'r',
+		'r',
+		'r',
+		'r'
+	}
+};
+
+/** Diagonal winning pattern. */
+static TPattern Grid_Winning_Pattern_3 =
+{
+	5,
+	5,
+	1000,
+	{
+		'r', 'a', 'a', 'a', 'a',
+		'a', 'r', 'a', 'a', 'a',
+		'a', 'a', 'r', 'a', 'a',
+		'a', 'a', 'a', 'r', 'a',
+		'a', 'a', 'a', 'a', 'r'
+	}
+};
+
+/** Diagonal winning pattern. */
+static TPattern Grid_Winning_Pattern_4 =
+{
+	5,
+	5,
+	1000,
+	{
+		'a', 'a', 'a', 'a', 'r',
+		'a', 'a', 'a', 'r', 'a',
+		'a', 'a', 'r', 'a', 'a',
+		'a', 'r', 'a', 'a', 'a',
+		'r', 'a', 'a', 'a', 'a'
+	}
+};
+
+/** All winning patterns. */
+static TPattern *Pointer_Grid_Winning_Patterns[] =
+{
+	&Grid_Winning_Pattern_1,
+	&Grid_Winning_Pattern_2,
+	&Grid_Winning_Pattern_3,
+	&Grid_Winning_Pattern_4,
+	NULL
+};
 
 //-------------------------------------------------------------------------------------------------
 // Public variables
@@ -73,5 +141,23 @@ int GridIsMoveAllowed(unsigned int Row, unsigned int Column)
 	// Check for a filled cell on south-east
 	if ((Row < Grid_Size - 1) && (Column < Grid_Size - 1) && (GridGetCellContent(Row + 1, Column + 1) != GRID_CELL_CONTENT_EMPTY)) return 1;
 	
+	return 0;
+}
+
+int GridIsGameWon(TGridCellContent Cell_Content)
+{
+	unsigned int Row, Column;
+	int i;
+	
+	for (Row = 0; Row < Grid_Size; Row++)
+	{
+		for (Column = 0; Column < Grid_Size; Column++)
+		{
+			for (i = 0; Pointer_Grid_Winning_Patterns[i] != NULL; i++)
+			{
+				if (PatternMatchFirst(Pointer_Grid_Winning_Patterns[i], Cell_Content)) return 1;
+			}
+		}
+	}
 	return 0;
 }

@@ -73,6 +73,9 @@ void InterfaceQuit(void)
 	// Clear the terminal and put the cursor to the upper left position
 	printf("\033[2J\n\033[H");
 	
+	// Show the cursor
+	printf("\033[?25h");
+	
 	// Re-enable the terminal "text" mode support
 	system("stty cooked echo");
 }
@@ -123,4 +126,24 @@ void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellConten
 	printf("\033[%dm%c", Character_Color, Character); // Display the cell character
 	printf("\0338"); // Restore the previously saved cursor position and attributes
 	printf("\033[?25h"); // Show the cursor
+}
+
+void InterfaceDisplayVictoryMessage(char *String_Message)
+{
+	char Character;
+	
+	// Hide the cursor
+	printf("\033[?25l");
+	
+	// Go to the grid bottom (and bypass the help message)
+	printf("\033[%d;1H", Grid_Size * 2 + 5);
+	
+	// Display the message
+	printf("%s Hit 'x' to exit.", String_Message);
+	
+	// Wait for the player to hit enter
+	do
+	{
+		Character = getchar();
+	} while ((Character != 'x') && (Character != 'X'));
 }
