@@ -18,10 +18,11 @@ int main(int argc, char *argv[])
 	unsigned int Cursor_Row, Cursor_Column;
 	
 	// Check parameters
-	if (argc != 2) // TODO set to 3 to take Difficulty into account
+	if (argc != 2)
 	{
-		printf("Usage : %s Grid_Size\n"
-			"Grid_Size : 5, 10, 15 or 20 cells\n", argv[0]); // TODO better comment that can be independent from the configurable grid size
+		printf("Tic Tac Toe game (C) 2016 Adrien RICCIARDI\n"
+			"Usage : %s Grid_Size\n"
+			"Grid_Size : 10, 15 or 20 cells\n", argv[0]); // TODO better comment that can be independent from the configurable grid size
 		return EXIT_FAILURE;
 	}
 	// Extract the grid size parameter

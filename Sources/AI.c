@@ -715,7 +715,7 @@ void AIMakeMove(void)
 	#endif
 	
 	// Choose the defensive or offensive move
-	if ((Best_Enemy_Move_Value < 10000) || (Best_Offensive_Value > 1000000)) // Attack only if there is a granted gain, prefer a defensive move to block the player
+	if ((Best_Enemy_Move_Value < 10000) || (Best_Offensive_Value > 1000000)) // Attack only if there is a granted gain or if the player can't do anything harmful, otherwise prefer a defensive move to block the player
 	{
 		Row = Best_Offensive_Row;
 		Column = Best_Offensive_Column;

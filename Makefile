@@ -2,6 +2,7 @@ CC = gcc
 CCFLAGS = -W -Wall
 
 INCLUDES_PATH = Includes
+INSTALLATION_PATH = /usr/bin
 SOURCES_PATH = Sources
 
 BINARY = Tic_Tac_Toe
@@ -18,3 +19,9 @@ all:
 
 clean:
 	rm -f $(BINARY)
+
+install:
+	install $(BINARY) $(INSTALLATION_PATH)
+
+uninstall:
+	rm -f $(INSTALLATION_PATH)/$(BINARY)
