@@ -161,3 +161,17 @@ int GridIsGameWon(TGridCellContent Cell_Content)
 	}
 	return 0;
 }
+
+int GridIsEntirelyFilled(void)
+{
+	unsigned int Row, Column;
+	
+	for (Row = 0; Row < Grid_Size; Row++)
+	{
+		for (Column = 0; Column < Grid_Size; Column++)
+		{
+			if (GridGetCellContent(Row, Column) == GRID_CELL_CONTENT_EMPTY) return 0;
+		}
+	}
+	return 1;
+}

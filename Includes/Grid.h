@@ -54,4 +54,10 @@ int GridIsMoveAllowed(unsigned int Row, unsigned int Column);
  */
 int GridIsGameWon(TGridCellContent Cell_Content);
 
+/** Tell if the grid contain some empty cell(s) or if all cells are filled.
+ * @return 0 if the grid has some empty cells,
+ * @return 1 if the grid is fully filled.
+ */
+int GridIsEntirelyFilled(void);
+
 #endif

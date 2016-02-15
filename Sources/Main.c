@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 				// Did the player won ?
 				if (GridIsGameWon(GRID_CELL_CONTENT_CIRCLE))
 				{
-					InterfaceDisplayVictoryMessage("\033[32mYou won !\033[0m");
+					InterfaceDisplayMessage("\033[32mYou won !\033[0m");
 					goto Exit;
 				}
 				
@@ -126,11 +126,16 @@ int main(int argc, char *argv[])
 				// Did the computer won ?
 				if (GridIsGameWon(GRID_CELL_CONTENT_CROSS))
 				{
-					InterfaceDisplayVictoryMessage("\033[31mComputer won...\033[0m");
+					InterfaceDisplayMessage("\033[31mComputer won...\033[0m");
 					goto Exit;
 				}
 				
-				// TODO match nul ?
+				// Check for a tied game
+				if (GridIsEntirelyFilled()) // The grid would be fully filled only after a computer move (because the computer always start the game)
+				{
+					InterfaceDisplayMessage("\033[33mDraw !\033[0m");
+					goto Exit;
+				}
 				break;
 				
 			case 'X':

@@ -128,7 +128,7 @@ void InterfaceDisplayCell(unsigned int Row, unsigned int Column, TGridCellConten
 	printf("\033[?25h"); // Show the cursor
 }
 
-void InterfaceDisplayVictoryMessage(char *String_Message)
+void InterfaceDisplayMessage(char *String_Message)
 {
 	char Character;
 	
