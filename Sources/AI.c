@@ -542,6 +542,50 @@ static TPattern AI_Pattern_Attack_5_4 =
 	}
 };
 
+static TPattern AI_Pattern_Attack_2_1 =
+{
+	1,
+	2,
+	100,
+	{
+		'r', 'r'
+	}
+};
+
+static TPattern AI_Pattern_Attack_2_2 =
+{
+	2,
+	1,
+	100,
+	{
+		'r',
+		'r'
+	}
+};
+
+static TPattern AI_Pattern_Attack_2_3 =
+{
+	2,
+	2,
+	100,
+	{
+		'r', 'a',
+		'a', 'r'
+	}
+};
+
+static TPattern AI_Pattern_Attack_2_4 =
+{
+	2,
+	2,
+	100,
+	{
+		'a', 'r',
+		'r', 'a'
+	}
+};
+
+
 // Defense-specific patterns
 // TODO if needed
 
@@ -588,6 +632,10 @@ static TPattern *Pointer_AI_Offensive_Patterns[] =
 	&AI_Pattern_Common_3_14,
 	&AI_Pattern_Common_3_15,
 	&AI_Pattern_Common_3_16,
+	&AI_Pattern_Attack_2_1,
+	&AI_Pattern_Attack_2_2,
+	&AI_Pattern_Attack_2_3,
+	&AI_Pattern_Attack_2_4,
 	&AI_Pattern_Common_1_1,
 	NULL
 };
