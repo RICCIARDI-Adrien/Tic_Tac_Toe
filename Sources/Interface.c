@@ -8,6 +8,7 @@
 #include <Interface.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 //-------------------------------------------------------------------------------------------------
 // Private constants and macros
@@ -62,7 +63,11 @@ void InterfaceInitialize(void)
 	InterfaceDisplayEmptyGrid();
 	
 	// Disable the terminal "text" mode support
-	system("stty raw -echo");
+	if (system("stty raw -echo") != 0)
+	{
+		printf("Error : could not switch the tty to raw mode.\n");
+		exit(EXIT_FAILURE);
+	}
 }
 
 void InterfaceQuit(void)
@@ -77,7 +82,11 @@ void InterfaceQuit(void)
 	printf("\033[?25h");
 	
 	// Re-enable the terminal "text" mode support
-	system("stty cooked echo");
+	if (system("stty cooked echo")!= 0)
+	{
+		printf("Error : could not switch the tty back to normal mode.\n");
+		exit(EXIT_FAILURE);
+	}
 }
 
 void InterfaceSetCursorPosition(unsigned int Row, unsigned int Column)
