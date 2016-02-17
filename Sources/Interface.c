@@ -17,7 +17,7 @@
  * @param Grid_Row The grid row coordinate.
  * @return The corresponding display row.
  */
-#define INTERFACE_COMPUTE_DISPLAY_ROW(Grid_Row) 
+#define INTERFACE_COMPUTE_DISPLAY_ROW(Grid_Row)
 
 /** Convert the grid column coordinate to the display coordinate.
  * @param Grid_Column The grid column coordinate.
@@ -82,7 +82,7 @@ void InterfaceQuit(void)
 	printf("\033[?25h");
 	
 	// Re-enable the terminal "text" mode support
-	if (system("stty cooked echo")!= 0)
+	if (system("stty cooked echo") != 0)
 	{
 		printf("Error : could not switch the tty back to normal mode.\n");
 		exit(EXIT_FAILURE);

@@ -587,7 +587,57 @@ static TPattern AI_Pattern_Attack_2_4 =
 
 
 // Defense-specific patterns
-// TODO if needed
+static TPattern AI_Pattern_Defense_3_1 =
+{
+	1,
+	5,
+	1000,
+	{
+		' ', 'r', 'r', 'r', ' '
+	}
+};
+
+static TPattern AI_Pattern_Defense_3_2 =
+{
+	5,
+	1,
+	1000,
+	{
+		' ',
+		'r',
+		'r',
+		'r',
+		' '
+	}
+};
+
+static TPattern AI_Pattern_Defense_3_3 =
+{
+	5,
+	5,
+	1000,
+	{
+		' ', 'a', 'a', 'a', 'a',
+		'a', 'r', 'a', 'a', 'a',
+		'a', 'a', 'r', 'a', 'a',
+		'a', 'a', 'a', 'r', 'a',
+		'a', 'a', 'a', 'a', ' '
+	}
+};
+
+static TPattern AI_Pattern_Defense_3_4 =
+{
+	5,
+	5,
+	1000,
+	{
+		'a', 'a', 'a', 'a', ' ',
+		'a', 'a', 'a', 'r', 'a',
+		'a', 'a', 'r', 'a', 'a',
+		'a', 'r', 'a', 'a', 'a',
+		' ', 'a', 'a', 'a', 'a'
+	}
+};
 
 // The patterns can't be directly initialized in a unique array because each pattern cells are of variable size
 static TPattern *Pointer_AI_Offensive_Patterns[] =
@@ -672,6 +722,10 @@ static TPattern *Pointer_AI_Defensive_Patterns[] =
 	&AI_Pattern_Common_3_7,
 	&AI_Pattern_Common_3_8,
 	&AI_Pattern_Common_3_9,
+	&AI_Pattern_Defense_3_1,
+	&AI_Pattern_Defense_3_2,
+	&AI_Pattern_Defense_3_3,
+	&AI_Pattern_Defense_3_4,
 	&AI_Pattern_Common_3_10,
 	&AI_Pattern_Common_3_11,
 	&AI_Pattern_Common_3_12,
